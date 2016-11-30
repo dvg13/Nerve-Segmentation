@@ -1,5 +1,5 @@
 require 'torch'
-require 'memoryMap'
+require 'memory_map'
 require 'cutorch'
 require 'cunn'
 require 'cudnn'
