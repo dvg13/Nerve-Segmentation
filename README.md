@@ -12,6 +12,7 @@ contains a number of neural net architectures.  The idea was to make the compone
 There are two basic models for a semantic segmentation model:
 1) Long (2014) <https://people.eecs.berkeley.edu/~jonlong/long_shelhamer_fcn.pdf>
 2) Noh (2015) <http://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Noh_Learning_Deconvolution_Network_ICCV_2015_paper.pdf>
+
 Note that due to memory the decoder network is a lot more limited than the symetrical encoder/decoder scheme in the paper.
 
 My initial process was to produce predicted segmentations and then run a classifier over the outputs.  Where the classifier determined that the nerve wasn't found, it would black out the segmentation.  This was necessary because my segmentation network did a poor job of distinguishing the images where the nerve was not present.  Additionally, the challenge was scored using the dice co-efficent.  Where the ground truth mask is all zeros, the dice score is undefined, and for the challenge this was dealt with by giving a loss of 1 when there were predicted pixels and 0 when there were none.  As this metric non-symmetrically punishes false positives, you can improve your score by reducing these.  
